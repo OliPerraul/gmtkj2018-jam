@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour, NSFSM.IContext {
 
     public static Game instance = null;
-    public NSFSM.FSM fsm;
+    [SerializeField]
+    private NSFSM.FSM _fsm;
 
-    public NSGame.Resources resources;
-    public NSGame.Settings settings;
+    public static NSFSM.FSM FSM
+    {
+        get { return instance._fsm; }
+    }
 
-    public void Start()
+    public void Awake()
     {
         // Prevent multiple game instance
         if (!instance)
@@ -24,12 +27,12 @@ public class Game : MonoBehaviour, NSFSM.IContext {
 
         DontDestroyOnLoad(this.gameObject);
         
-        fsm.Launch(this);
+        _fsm.Launch(this);
     }
 
     public void Update()
     {
-        fsm.Tick();
+        _fsm.Tick();
     }
 
 

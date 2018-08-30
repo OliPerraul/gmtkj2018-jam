@@ -14,7 +14,7 @@ namespace GameLogic
 
         public Intermission(float timeleft)
         {
-            GameObject obj = Object.Instantiate(Game.instance.resources.countDown);
+            GameObject obj = Object.Instantiate(NSGame.Resources.Instance.countDown);
             CountDown = obj.GetComponent<CountDown>();
 
             duration = timeleft;

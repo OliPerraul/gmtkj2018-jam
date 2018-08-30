@@ -77,7 +77,7 @@ public class CountDown : MonoBehaviour
     public static CountDown Create()
     {
 
-        GameObject obj = Object.Instantiate(Game.instance.resources.countDown);
+        GameObject obj = Object.Instantiate(NSGame.Resources.Instance.countDown);
         CountDown countDown = obj.GetComponent<CountDown>();
         return countDown;
     }

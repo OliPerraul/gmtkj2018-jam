@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class GridSelect : MonoBehaviour
 {
-
-    public Grid grid;
     public CellHighlight cellHighlight;
 
     public LayerMask layerMask;
@@ -20,21 +18,24 @@ public class GridSelect : MonoBehaviour
 
     private void Update()
     {
+        Cell cell = GetSelectedCell();
+        cellHighlight.transform.localPosition = cell.transform.localPosition;
+    }
+
+    public Cell GetSelectedCell()
+    {
         Vector2Int idx = GetSelectedIdx();
-        Cell cell = grid.cells[idx.x, idx.y];
-        cellHighlight.transform.position = cell.transform.position;
+        Cell cell = NSWorld.Grid.Instance.cells[idx.x, idx.y];
+        return cell;
+    }
 
-        // get mouse click's position in 2d plane
-        //Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //pz.z = 0;
 
-        //// convert mouse click's position to Grid position
-        //GridLayout gridLayout = transform.parent.GetComponentInParent<GridLayout>();
-        //Vector3Int cellPosition = gridLayout.WorldToCell(pz);
+    public void SnapToSelectedCell(Transform transform)
+    {
+        Cell cell = GetSelectedCell();
+        transform.SetParent(cell.transform);
+        transform.localPosition = Vector3.zero;
 
-        //// set selectedUnit to clicked location on grid
-        ////selectedUnit.setLocation(cellPosition);
-        //Debug.Log(cellPosition);
     }
 
 
@@ -51,15 +52,15 @@ public class GridSelect : MonoBehaviour
             Debug.DrawLine(wp, hit.point, Color.red);
 
             Vector3 pos = hit.point;
-            idx.x = ((int) pos.x) / grid.cellSize ; //(int) Mathf.Round(pos.x / grid.cellSize);
-            idx.y = ((int)pos.z) / grid.cellSize;//(int) Mathf.Round(pos.z / grid.cellSize);
+            idx.x = ((int) pos.x) / NSWorld.Grid.Instance.cellSize ; //(int) Mathf.Round(pos.x / grid.cellSize);
+            idx.y = ((int)pos.z) / NSWorld.Grid.Instance.cellSize;//(int) Mathf.Round(pos.z / grid.cellSize);
 
             idx += offset;
 
-            Debug.Log(idx);
+            //Debug.Log(idx);
         }
 
-        idx.Clamp(Vector2Int.zero, new Vector2Int(grid.size.x - 1, grid.size.y - 1));
+        idx.Clamp(Vector2Int.zero, new Vector2Int(NSWorld.Grid.Instance.size.x - 1, NSWorld.Grid.Instance.size.y - 1));
 
         return idx;
     }

@@ -19,7 +19,7 @@ namespace NSInventory
         // Use this for initialization
         void Start()
         {
-            inventory = (Inventory)Game.instance.fsm.Top.GetStateComponent("Inventory");
+            inventory = (Inventory) Game.FSM.Top.GetStateComponent("Inventory");
             inventory.onInventoryUpdated.AddListener(Refresh);
 
             gridItems = new GridItem[slotCount];
@@ -31,7 +31,7 @@ namespace NSInventory
         {
             for (int i = 0; i < slotCount; i++)
             {
-                GameObject gobj = Instantiate(Game.instance.resources.inventory.gridItem, transform);
+                GameObject gobj = Instantiate(NSInventory.Resources.Instance.gridItem, transform);
                 gridItems[i] = gobj.GetComponent<GridItem>();
                 gridItems[i].index = i;
             }
@@ -39,7 +39,7 @@ namespace NSInventory
 
         private void Refresh()
         {
-            for (int i = 0; i < slotCount; i++)
+            for (int i = 0; i < slotCount-1; i++)
             {
                 gridItems[i].item = inventory.items[i];
 

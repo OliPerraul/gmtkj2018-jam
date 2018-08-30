@@ -377,14 +377,14 @@ namespace ProGrids
 		}
 
 		[MenuItem("Tools/ProGrids/Cycle SceneView Projection", true, 101)]
-		[MenuItem("Tools/ProGrids/Increase Grid Size", true, 203)]
-		[MenuItem("Tools/ProGrids/Decrease Grid Size", true, 202)]
+		[MenuItem("Tools/ProGrids/Increase NSWorld.Grid Size", true, 203)]
+		[MenuItem("Tools/ProGrids/Decrease NSWorld.Grid Size", true, 202)]
 		public static bool VerifyGridSizeAdjustment()
 		{
 			return instance != null;
 		}
 
-		[MenuItem("Tools/ProGrids/Decrease Grid Size", false, 202)]
+		[MenuItem("Tools/ProGrids/Decrease NSWorld.Grid Size", false, 202)]
 		public static void DecreaseGridSize()
 		{
 			if (instance == null) return;
@@ -400,7 +400,7 @@ namespace ProGrids
 			SceneView.RepaintAll();
 		}
 
-		[MenuItem("Tools/ProGrids/Increase Grid Size", false, 203)]
+		[MenuItem("Tools/ProGrids/Increase NSWorld.Grid Size", false, 203)]
 		public static void IncreaseGridSize()
 		{
 			if (instance == null) return;
@@ -1571,7 +1571,7 @@ namespace ProGrids
 
 		private void SnapToGrid(Transform[] transforms)
 		{
-			Undo.RecordObjects(transforms as UnityEngine.Object[], "Snap to Grid");
+			Undo.RecordObjects(transforms as UnityEngine.Object[], "Snap to NSWorld.Grid");
 
 			foreach (Transform t in transforms)
 				t.position = pg_Util.SnapValue(t.position, snapValue);

@@ -14,31 +14,53 @@ namespace NSInventory
 
         public int index = 0;
 
-        public Item item;
+        public Item item = null;
         public UnityEvent unityEvent;
 
         //Used as ref when ovj is drag
         private HoverItem hoverItem;
 
-        private Image itemImage;
+        //private Image image = null;
 
         Inventory inventory;
 
+        GridItemData data;
 
         // Use this for initialization
         public void Start()
         {
-            inventory = (Inventory)Game.instance.fsm.Top.GetStateComponent("Inventory");
-
+            inventory = (Inventory)Game.FSM.Top.GetStateComponent("Inventory");
+            data = GetComponent<GridItemData>();
 
         }
 
         public void Update()
         {
+            Refresh();
+        }
+
+
+        public void Refresh()
+        {
             if (item != null)
-                item.icon = itemImage.sprite;
+            {
+                if (item.useModel)
+                {
+                    //TODO use more mesh, mat
+                    data.meshFilter.mesh = item.model.mesh[0];
+                    data.meshRenderer.material = item.model.material[0];
+
+                    return;
+                }
+
+                data.image.sprite = item.icon;
+            }
             else
-                itemImage.sprite = null;
+            {
+                data.image.sprite = null;
+                data.meshFilter.mesh = null;
+                data.meshRenderer.material = null;
+            }
         }
 
 
@@ -46,7 +68,7 @@ namespace NSInventory
         {
             if (item != null)
             {
-                GameObject gobj = Instantiate(Game.instance.resources.inventory.hoverItem);
+                GameObject gobj = Instantiate(NSInventory.Resources.Instance.hoverItem);
 
                 gobj.transform.position = transform.position;
 

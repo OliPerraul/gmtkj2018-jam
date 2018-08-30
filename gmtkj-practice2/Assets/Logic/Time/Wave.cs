@@ -25,11 +25,11 @@ namespace GameLogic
             duration = timeleft;
 
             //main CountDown
-            GameObject obj = Object.Instantiate(Game.instance.resources.countDown);
+            GameObject obj = Object.Instantiate(NSGame.Resources.Instance.countDown);
             CountDown = obj.GetComponent<CountDown>();
 
             //CountDown next enemy
-            GameObject obj2 = Object.Instantiate(Game.instance.resources.countDown);
+            GameObject obj2 = Object.Instantiate(NSGame.Resources.Instance.countDown);
             CountDownNextEnemy = obj2.GetComponent<CountDown>();
            
             //Get entries

@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory Item")]
 public class Item : ScriptableObject
 {
 
-    public Sprite icon;
+    public Sprite icon = null;
+
+    public bool useModel;
+    public NSResources.Model model;
+
     public int count;
     public float cost;
 
@@ -29,3 +34,4 @@ public class Item : ScriptableObject
         return name == item.name;
     }
 }
+

@@ -14,7 +14,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        Game.instance.fsm.SwitchState("Begin");
+        Game.FSM.SwitchState("Begin");
     }
 
 

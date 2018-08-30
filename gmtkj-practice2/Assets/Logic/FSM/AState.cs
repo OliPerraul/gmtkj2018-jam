@@ -17,35 +17,19 @@ public abstract class AState : MonoBehaviour
 
     public abstract string GetName();
 
-    private List<NSFSM.IStateComponent> components;
-
     [SerializeField]
-    public GameObject componentsParent;
+    private NSFSM.AStateComponent[] components;
 
 
-    public void Start()
+    public NSFSM.AStateComponent GetStateComponent(string name)
     {
-        components = new List<NSFSM.IStateComponent>();
-
-        if (componentsParent)
-        {
-            foreach (GameObject child in componentsParent.transform)
-            {
-                components.Add(child.GetComponent<NSFSM.IStateComponent>());
-            }
-        }
-
-    }
-
-    public NSFSM.IStateComponent GetStateComponent(string name)
-    {
-        foreach (NSFSM.IStateComponent component in components)
+        foreach (NSFSM.AStateComponent component in components)
         {
             if (component.GetName() == name)
                 return component;   
         }
 
-        throw new Exception("State component " + name + "not found.");
+        throw new Exception("State component " + name + " not found.");
     }
 
 
@@ -55,7 +39,7 @@ public abstract class AState : MonoBehaviour
         if(debug)
         Debug.Log(GetName() + " Entered");
 
-        foreach (NSFSM.IStateComponent component in components)
+        foreach (NSFSM.AStateComponent component in components)
         {
             component.Enter();
         }
@@ -69,7 +53,7 @@ public abstract class AState : MonoBehaviour
         if(debug)
         Debug.Log(GetName() + " Exit");
 
-        foreach (NSFSM.IStateComponent component in components)
+        foreach (NSFSM.AStateComponent component in components)
         {
             component.Exit();
         }
@@ -82,7 +66,7 @@ public abstract class AState : MonoBehaviour
         if(debug)
         Debug.Log(GetName() + " Tick");
 
-        foreach (NSFSM.IStateComponent component in components)
+        foreach (NSFSM.AStateComponent component in components)
         {
             component.Tick();
         }

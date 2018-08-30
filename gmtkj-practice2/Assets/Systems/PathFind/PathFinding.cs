@@ -15,7 +15,7 @@ namespace PF
     /// Main class to find the best path to walk from A to B.
     /// 
     /// Usage example:
-    /// Grid grid = new Grid(width, height, tiles_costs);
+    /// NSWorld.Grid grid = new NSWorld.Grid(width, height, tiles_costs);
     /// List<Point> path = Pathfinding.FindPath(grid, from, to);
     /// </summary>
     public class Pathfinding
@@ -39,7 +39,7 @@ namespace PF
         /// <summary>
         /// Find a path between two points.
         /// </summary>
-        /// <param name="grid">Grid to search.</param>
+        /// <param name="grid">NSWorld.Grid to search.</param>
         /// <param name="startPos">Starting position.</param>
 		/// <param name="targetPos">Ending position.</param>
         /// <param name="distance">The type of distance, Euclidean or Manhattan.</param>
@@ -65,7 +65,7 @@ namespace PF
         /// <summary>
         /// Internal function that implements the path-finding algorithm.
         /// </summary>
-        /// <param name="grid">Grid to search.</param>
+        /// <param name="grid">NSWorld.Grid to search.</param>
         /// <param name="startPos">Starting position.</param>
         /// <param name="targetPos">Ending position.</param>
         /// <param name="distance">The type of distance, Euclidean or Manhattan.</param>
@@ -136,7 +136,7 @@ namespace PF
         /// <summary>
         /// Retrace path between two points.
         /// </summary>
-        /// <param name="grid">Grid to work on.</param>
+        /// <param name="grid">NSWorld.Grid to work on.</param>
         /// <param name="startNode">Starting node.</param>
         /// <param name="endNode">Ending (target) node.</param>
         /// <returns>Retraced path between nodes.</returns>

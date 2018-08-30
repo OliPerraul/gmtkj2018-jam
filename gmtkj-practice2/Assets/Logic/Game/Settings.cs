@@ -27,10 +27,15 @@ namespace NSGame
         public float TIME_NEW_ITEM_MIN = 10f;
         public float TIME_NEW_ITEM_MAX = 20f;
 
-        //[Header("\n")]
+
+        private static Settings _instance;
+        public static NSGame.Settings Instance { get { return _instance; } }
 
 
-        //public static Settings instance;
+        private void Awake()
+        {
+            _instance = this;
+        }
 
     }
 }

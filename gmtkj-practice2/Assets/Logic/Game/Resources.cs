@@ -6,17 +6,18 @@ namespace NSGame
 {
     public class Resources : MonoBehaviour
     {
+        [Header("Game")]
+        [Header("\n")]
 
-        public static Resources instance;
         public GameObject countDown;
 
-        [Header("Other Resources")]
-        public NSInventory.Resources inventory;
+        private static Resources _instance;
+        public static NSGame.Resources Instance {  get{ return _instance; } }
 
 
-        private void Start()
+        private void Awake()
         {
-            instance = this;
+            _instance = this;
         }
 
     }

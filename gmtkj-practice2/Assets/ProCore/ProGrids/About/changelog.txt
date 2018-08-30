@@ -77,7 +77,7 @@
 
 # Features
 	- New interface jettisons bulky Editor Window in favor of a minimal dropdown in the active sceneview.
-	- New "Predictive Grid" option will automatically change the grid plane to best match the current movement.
+	- New "Predictive NSWorld.Grid" option will automatically change the grid plane to best match the current movement.
 	- Add option to snap all selected objects independently of on another (toggle off "Snap as Group").
 
 # Bug Fixes
@@ -106,7 +106,7 @@
 # Bug Fixes
 	- Fix crash on OSX in Unity 5.
 	- Remember grid position when closing and re-opening ProGrids.
-	- Grid lines no longer render on top of geometry in Deferred Rendering.
+	- NSWorld.Grid lines no longer render on top of geometry in Deferred Rendering.
 	- Improve performance of Editor when rendering perspective grids.
 
 -- ProGrids 2.1.4 -
