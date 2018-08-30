@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace NSTacticsMovement
+namespace NSTacticsMovementCustom
 {
 
     public class MenuScript

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace NSTacticsMovement
+namespace NSTacticsMovementCustom
 {
 
     public class Tile : MonoBehaviour
