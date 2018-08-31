@@ -111,6 +111,7 @@
     <Compile Include="Assets\Systems\PathFind\Node.cs" />
     <Compile Include="Assets\Systems\PathFind\PathFinding.cs" />
     <Compile Include="Assets\Systems\PathFind\Point.cs" />
+    <Compile Include="Assets\Systems\TacticsMovement\ATacticsUnit.cs" />
     <Compile Include="Assets\Systems\TacticsMovement\TacticsCamera.cs" />
     <Compile Include="Assets\Systems\TacticsMovement\TacticsMovement.cs" />
     <Compile Include="Assets\Systems\TacticsMovement\TurnManager.cs" />
@@ -125,8 +126,9 @@
     <Compile Include="Assets\World\Characters\Player\Player.cs" />
     <Compile Include="Assets\World\Characters\Player\States\GroundedMovement.cs" />
     <Compile Include="Assets\World\Characters\Player\States\Idle.cs" />
+    <Compile Include="Assets\World\Characters\Player\States\Move.cs" />
     <Compile Include="Assets\World\Characters\Player\States\PlayerState.cs" />
-    <Compile Include="Assets\World\Characters\Player\States\Shoot.cs" />
+    <Compile Include="Assets\World\Characters\Player\States\UseItem.cs" />
     <Compile Include="Assets\World\Level\Block.cs" />
     <Compile Include="Assets\World\Level\BlockColliderData.cs" />
     <Compile Include="Assets\World\Level\BlockHighlight.cs" />

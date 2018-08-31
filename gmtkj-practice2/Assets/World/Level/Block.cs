@@ -29,11 +29,6 @@ namespace NSLevel
         public float g = 0;
         public float h = 0;
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
         void Update()
