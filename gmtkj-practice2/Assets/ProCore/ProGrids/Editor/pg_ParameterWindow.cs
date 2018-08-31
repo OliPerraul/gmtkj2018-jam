@@ -9,7 +9,7 @@ namespace ProGrids
 	{
 		public pg_Editor editor;
 
-		GUIContent gc_predictiveGrid = new GUIContent("Predictive NSWorld.Grid", "If enabled, the grid will automatically render at the optimal axis based on movement.");
+		GUIContent gc_predictiveGrid = new GUIContent("Predictive NSLevel.Grid", "If enabled, the grid will automatically render at the optimal axis based on movement.");
 		GUIContent gc_snapAsGroup = new GUIContent("Snap as Group", "If enabled, selected objects will keep their relative offsets when moving.  If disabled, every object in the selection is snapped to grid independently.");
 
 		void OnGUI()
@@ -47,7 +47,7 @@ namespace ProGrids
 
 			EditorGUI.BeginChangeCheck();
 
-			_gridUnits = (SnapUnit)EditorGUILayout.EnumPopup("NSWorld.Grid Units", _gridUnits);
+			_gridUnits = (SnapUnit)EditorGUILayout.EnumPopup("NSLevel.Grid Units", _gridUnits);
 
 			EditorGUI.BeginChangeCheck();
 			editor.angleValue = EditorGUILayout.Slider("Angle", editor.angleValue, 0f, 180f);

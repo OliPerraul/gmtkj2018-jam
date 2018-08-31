@@ -42,7 +42,7 @@ namespace PF
         /// <summary>
         /// Create the grid node.
         /// </summary>
-        /// <param name="_walkable">Is this tile walkable?</param>
+        /// <param name="_walkable">Is this block walkable?</param>
         /// <param name="_gridX">Node x index.</param>
         /// <param name="_gridY">Node y index.</param>
         public Node(bool _walkable, int _gridX, int _gridY)
@@ -69,7 +69,7 @@ namespace PF
 		/// <summary>
 		/// Updates the grid node.
 		/// </summary>
-		/// <param name="_walkable">Is this tile walkable?</param>
+		/// <param name="_walkable">Is this block walkable?</param>
 		/// <param name="_gridX">Node x index.</param>
 		/// <param name="_gridY">Node y index.</param>
 		public void Update(bool _walkable, int _gridX, int _gridY) {

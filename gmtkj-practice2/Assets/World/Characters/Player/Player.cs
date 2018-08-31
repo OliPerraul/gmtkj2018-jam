@@ -16,12 +16,12 @@ public class Player : MonoBehaviour, NSFSM.IContext {
 
     // Use this for initialization
     void Start () {
-        movement = new Vector3();
-        fsm.Launch(this);
+        //movement = new Vector3();
+        //fsm.Launch(this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        fsm.Tick();
+        //fsm.Tick();
 	}
 }

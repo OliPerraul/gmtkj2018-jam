@@ -11,7 +11,7 @@ namespace PF
 {
     /// <summary>
     /// A 2D grid of nodes we use to find path.
-    /// The grid mark which tiles are walkable and which are not.
+    /// The grid mark which blocks are walkable and which are not.
     /// </summary>
     public class Grid
     {
@@ -22,45 +22,45 @@ namespace PF
         int gridSizeX, gridSizeY;
 
         /// <summary>
-        /// Create a new grid with tile prices.
+        /// Create a new grid with block prices.
         /// </summary>
-        /// <param name="tiles_costs">A 2d array of tile prices.
-        ///     0.0f = Unwalkable tile.
-        ///     1.0f = Normal tile.
-        ///     > 1.0f = costy tile.
-        ///     < 1.0f = cheap tile.
+        /// <param name="blocks_costs">A 2d array of block prices.
+        ///     0.0f = Unwalkable block.
+        ///     1.0f = Normal block.
+        ///     > 1.0f = costy block.
+        ///     < 1.0f = cheap block.
         /// </param>
-        public Grid(float[,] tiles_costs)
+        public Grid(float[,] blocks_costs)
         {
             // create nodes
-            CreateNodes(tiles_costs.GetLength(0), tiles_costs.GetLength(1));
+            CreateNodes(blocks_costs.GetLength(0), blocks_costs.GetLength(1));
 
             // init nodes
             for (int x = 0; x < gridSizeX; x++)
             {
                 for (int y = 0; y < gridSizeY; y++)
                 {
-                    nodes[x, y] = new Node(tiles_costs[x, y], x, y);
+                    nodes[x, y] = new Node(blocks_costs[x, y], x, y);
 
                 }
             }
         }
 
         /// <summary>
-        /// Create a new grid without tile prices, eg with just walkable / unwalkable tiles.
+        /// Create a new grid without block prices, eg with just walkable / unwalkable blocks.
         /// </summary>
-        /// <param name="walkable_tiles">A 2d array representing which tiles are walkable and which are not.</param>
-        public Grid(bool[,] walkable_tiles)
+        /// <param name="walkable_blocks">A 2d array representing which blocks are walkable and which are not.</param>
+        public Grid(bool[,] walkable_blocks)
         {
             // create nodes
-            CreateNodes(walkable_tiles.GetLength(0), walkable_tiles.GetLength(1));
+            CreateNodes(walkable_blocks.GetLength(0), walkable_blocks.GetLength(1));
 
             // init nodes
             for (int x = 0; x < gridSizeX; x++)
             {
                 for (int y = 0; y < gridSizeY; y++)
                 {
-                    nodes[x, y] = new Node(walkable_tiles[x, y] ? 1.0f : 0.0f, x, y);
+                    nodes[x, y] = new Node(walkable_blocks[x, y] ? 1.0f : 0.0f, x, y);
                 }
             }
         }
@@ -78,18 +78,18 @@ namespace PF
         }
 
 		/// <summary>
-		/// Updates the already created grid with new tile prices.
+		/// Updates the already created grid with new block prices.
 		/// </summary>
 		/// <returns><c>true</c>, if grid was updated, <c>false</c> otherwise.</returns>
-		/// <param name="tiles_costs">Tiles costs.</param>
-		public void UpdateGrid (float[,] tiles_costs)
+		/// <param name="blocks_costs">Blocks costs.</param>
+		public void UpdateGrid (float[,] blocks_costs)
         {
             // check if need to re-create grid
             if (nodes == null ||
-                gridSizeX != tiles_costs.GetLength(0) ||
-                gridSizeY != tiles_costs.GetLength(1))
+                gridSizeX != blocks_costs.GetLength(0) ||
+                gridSizeY != blocks_costs.GetLength(1))
             {
-                CreateNodes(tiles_costs.GetLength(0), tiles_costs.GetLength(1));
+                CreateNodes(blocks_costs.GetLength(0), blocks_costs.GetLength(1));
             }
 
             // update nodes
@@ -97,24 +97,24 @@ namespace PF
 			{
 				for (int y = 0; y < gridSizeY; y++)
 				{
-					nodes[x, y].Update(tiles_costs[x, y], x, y);
+					nodes[x, y].Update(blocks_costs[x, y], x, y);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Updates the already created grid without new tile prices, eg with just walkable / unwalkable tiles.
+		/// Updates the already created grid without new block prices, eg with just walkable / unwalkable blocks.
 		/// </summary>
 		/// <returns><c>true</c>, if grid was updated, <c>false</c> otherwise.</returns>
-		/// <param name="walkable_tiles">Walkable tiles.</param>
-		public void UpdateGrid (bool[,] walkable_tiles)
+		/// <param name="walkable_blocks">Walkable blocks.</param>
+		public void UpdateGrid (bool[,] walkable_blocks)
         {
             // check if need to re-create grid
             if (nodes == null ||
-                gridSizeX != walkable_tiles.GetLength(0) ||
-                gridSizeY != walkable_tiles.GetLength(1))
+                gridSizeX != walkable_blocks.GetLength(0) ||
+                gridSizeY != walkable_blocks.GetLength(1))
             {
-                CreateNodes(walkable_tiles.GetLength(0), walkable_tiles.GetLength(1));
+                CreateNodes(walkable_blocks.GetLength(0), walkable_blocks.GetLength(1));
             }
 
             // update grid
@@ -122,13 +122,13 @@ namespace PF
 			{
 				for (int y = 0; y < gridSizeY; y++)
 				{
-					nodes[x, y].Update(walkable_tiles[x, y] ? 1.0f : 0.0f, x, y);
+					nodes[x, y].Update(walkable_blocks[x, y] ? 1.0f : 0.0f, x, y);
 				}
 			} 
 		}
 
         /// <summary>
-        /// Get all the neighbors of a given tile in the grid.
+        /// Get all the neighbors of a given block in the grid.
         /// </summary>
         /// <param name="node">Node to get neighbors for.</param>
         /// <returns>List of node neighbors.</returns>

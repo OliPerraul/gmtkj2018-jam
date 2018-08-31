@@ -46,9 +46,7 @@ namespace NSInventory
                     _meshRenderer.transform.localPosition = item.model.transform.position;
                     _meshRenderer.transform.localRotation = item.model.transform.rotation;
                     _meshRenderer.transform.localScale = item.model.transform.scale;
-
-                    NSWorld.Grid.Instance.select.SnapToSelectedCell(transform);
-
+                    NSLevel.Level.Instance.select.SnapToSelected(transform);
                 }
 
             }
@@ -69,7 +67,7 @@ namespace NSInventory
 
             //    Vector3Int gridPos = World.instance.GetGridPos(transform);
 
-            //    World.instance.tilemapInterests.SetTile(gridPos, item.tile);
+            //    World.instance.blockmapInterests.SetBlock(gridPos, item.block);
 
             //    Vector3 pos = World.instance.GetWorldPos(gridPos);
 

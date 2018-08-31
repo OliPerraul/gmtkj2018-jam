@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,20 +7,13 @@ using UnityEngine;
 namespace NSTacticsMovement
 {
 
-    public class TurnManager : MonoBehaviour
+    public class TurnManager : NSFSM.AStateComponent
     {
-        static Dictionary<string, List<TacticsMove>> units = new Dictionary<string, List<TacticsMove>>();
+        static Dictionary<string, List<TacticsMovement>> units = new Dictionary<string, List<TacticsMovement>>();
         static Queue<string> turnKey = new Queue<string>();
-        static Queue<TacticsMove> turnTeam = new Queue<TacticsMove>();
+        static Queue<TacticsMovement> turnTeam = new Queue<TacticsMovement>();
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
+        public override void Tick()
         {
             if (turnTeam.Count == 0)
             {
@@ -27,11 +21,28 @@ namespace NSTacticsMovement
             }
         }
 
+        public override void Enter()
+        {
+            //base.Enter();
+        }
+
+        public override void Exit()
+        {
+            //
+        }
+
+        public override string GetName()
+        {
+            return "TurnManager";
+        }
+
+
+
         static void InitTeamTurnQueue()
         {
-            List<TacticsMove> teamList = units[turnKey.Peek()];
+            List<TacticsMovement> teamList = units[turnKey.Peek()];
 
-            foreach (TacticsMove unit in teamList)
+            foreach (TacticsMovement unit in teamList)
             {
                 turnTeam.Enqueue(unit);
             }
@@ -49,7 +60,7 @@ namespace NSTacticsMovement
 
         public static void EndTurn()
         {
-            TacticsMove unit = turnTeam.Dequeue();
+            TacticsMovement unit = turnTeam.Dequeue();
             unit.EndTurn();
 
             if (turnTeam.Count > 0)
@@ -64,13 +75,13 @@ namespace NSTacticsMovement
             }
         }
 
-        public static void AddUnit(TacticsMove unit)
+        public static void AddUnit(TacticsMovement unit)
         {
-            List<TacticsMove> list;
+            List<TacticsMovement> list;
 
             if (!units.ContainsKey(unit.tag))
             {
-                list = new List<TacticsMove>();
+                list = new List<TacticsMovement>();
                 units[unit.tag] = list;
 
                 if (!turnKey.Contains(unit.tag))
@@ -85,5 +96,6 @@ namespace NSTacticsMovement
 
             list.Add(unit);
         }
+
     }
 }

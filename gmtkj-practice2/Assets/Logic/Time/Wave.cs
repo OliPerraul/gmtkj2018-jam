@@ -33,7 +33,7 @@ namespace GameLogic
             CountDownNextEnemy = obj2.GetComponent<CountDown>();
            
             //Get entries
-            //entries = TilemapUtils.GetEntries(World.instance.tilemapLayout);
+            //entries = BlockmapUtils.GetEntries(World.instance.blockmapLayout);
 
             //Set the monster count
            // SetMonsterCount();

@@ -1,7 +1,7 @@
 ﻿
 using System;
 /**
-* Provide simple path-finding algorithm with tile prices support.
+* Provide simple path-finding algorithm with block prices support.
 * Based on code and tutorial by Sebastian Lague (https://www.youtube.com/channel/UCmtyQOKKmrMVaKuRXz02jbQ).
 *   
 * Author: Ronen Ness.
@@ -15,7 +15,7 @@ namespace PF
     /// Main class to find the best path to walk from A to B.
     /// 
     /// Usage example:
-    /// NSWorld.Grid grid = new NSWorld.Grid(width, height, tiles_costs);
+    /// NSLevel.Grid grid = new NSLevel.Grid(width, height, blocks_costs);
     /// List<Point> path = Pathfinding.FindPath(grid, from, to);
     /// </summary>
     public class Pathfinding
@@ -39,11 +39,11 @@ namespace PF
         /// <summary>
         /// Find a path between two points.
         /// </summary>
-        /// <param name="grid">NSWorld.Grid to search.</param>
+        /// <param name="grid">NSLevel.Grid to search.</param>
         /// <param name="startPos">Starting position.</param>
 		/// <param name="targetPos">Ending position.</param>
         /// <param name="distance">The type of distance, Euclidean or Manhattan.</param>
-        /// <param name="ignorePrices">If true, will ignore tile price (how much it "cost" to walk on).</param>
+        /// <param name="ignorePrices">If true, will ignore block price (how much it "cost" to walk on).</param>
         /// <returns>List of points that represent the path to walk.</returns>
 		public static List<Point> FindPath(Grid grid, Point startPos, Point targetPos, DistanceType distance = DistanceType.Euclidean, bool ignorePrices = false)
         {
@@ -65,11 +65,11 @@ namespace PF
         /// <summary>
         /// Internal function that implements the path-finding algorithm.
         /// </summary>
-        /// <param name="grid">NSWorld.Grid to search.</param>
+        /// <param name="grid">NSLevel.Grid to search.</param>
         /// <param name="startPos">Starting position.</param>
         /// <param name="targetPos">Ending position.</param>
         /// <param name="distance">The type of distance, Euclidean or Manhattan.</param>
-        /// <param name="ignorePrices">If true, will ignore tile price (how much it "cost" to walk on).</param>
+        /// <param name="ignorePrices">If true, will ignore block price (how much it "cost" to walk on).</param>
         /// <returns>List of grid nodes that represent the path to walk.</returns>
         private static List<Node> _ImpFindPath(Grid grid, Point startPos, Point targetPos, DistanceType distance = DistanceType.Euclidean, bool ignorePrices = false)
         {
@@ -136,7 +136,7 @@ namespace PF
         /// <summary>
         /// Retrace path between two points.
         /// </summary>
-        /// <param name="grid">NSWorld.Grid to work on.</param>
+        /// <param name="grid">NSLevel.Grid to work on.</param>
         /// <param name="startNode">Starting node.</param>
         /// <param name="endNode">Ending (target) node.</param>
         /// <returns>Retraced path between nodes.</returns>

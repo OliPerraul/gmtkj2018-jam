@@ -796,7 +796,7 @@
 
 - Edge wireframe no longer renders the material preview wells.
 - Fix performance issues when editing large objects in the UV editor with Auto UVs.
-- Fix bug where 'Push to NSWorld.Grid' from ProGrids would not Undo correctly.
+- Fix bug where 'Push to NSLevel.Grid' from ProGrids would not Undo correctly.
 - Fix lagging wireframe when running "Freeze Transforms" action.
 - Fix null ref when deleting multiple faces.
 
@@ -826,7 +826,7 @@
 - Save vertex colors when ProBuilder-izing a mesh.
 - Fix occasional null ref when continuing UVs.
 - Support Undo in UV Editor Auto panel.
-- Support Undo for `Push to NSWorld.Grid` events from ProGrids.
+- Support Undo for `Push to NSLevel.Grid` events from ProGrids.
 - Fix occasional `Index out of range` errors when subdividing, triangulating, and setting pivot.
 - Fix crash when running `Fix Missing Script References` in Unity 5.0.0b18 (big thanks to Michael N!)
 - Improve the performance of Planar Mapping manual UVs.
@@ -1104,7 +1104,7 @@
 - Fix inconsistent extrusion with Edge and Vertex selections.
 - Fix bug where TextureWindow would not initialize with current selection.
 - Automatically clean up degenerate triangles caused by vertex merge/weld operations.
-- Enable 'Push to NSWorld.Grid' support for ProGrids users with vertex, edge, and face selection.
+- Enable 'Push to NSLevel.Grid' support for ProGrids users with vertex, edge, and face selection.
 - Fix bug that caused vertices behind the scene camera to be selected incorrectly in some cases.
 - Fix object incorrectly instantiating off-grid with strange pivot placement.
 - (Beta) Rename AboutWindow to avoid namespace conflicts.
@@ -1229,7 +1229,7 @@
 - Add preference for turning off sceneview notifications (Preferences/ProBuilder).
 - New preference item allows you to specify the 'Force Convex' field of a 'Mesh Collider' if it is set to default collider.
 - New 'Reset Projection Axis UV' repair tool.  Resets all UV settings to use the 'Auto' face projection.
-- New 'Force Pivot to Vertex' and 'Force Pivot to NSWorld.Grid' preferences allow for easier grid snapping.
+- New 'Force Pivot to Vertex' and 'Force Pivot to NSLevel.Grid' preferences allow for easier grid snapping.
 - New default material for ProBuilder objects.
 
 ## Bug Fixes

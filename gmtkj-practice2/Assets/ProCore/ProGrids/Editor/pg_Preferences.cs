@@ -49,7 +49,7 @@ namespace ProGrids
 
 			// EditorGUILayout.HelpBox("Changes will take effect on the next ProGrids open.", MessageType.Info);
 
-			GUILayout.Label("NSWorld.Grid Colors per Axis", EditorStyles.boldLabel);
+			GUILayout.Label("NSLevel.Grid Colors per Axis", EditorStyles.boldLabel);
 			_gridColorX = EditorGUILayout.ColorField("X Axis", _gridColorX);
 			_gridColorY = EditorGUILayout.ColorField("Y Axis", _gridColorY);
 			_gridColorZ = EditorGUILayout.ColorField("Z Axis", _gridColorZ);
@@ -57,9 +57,9 @@ namespace ProGrids
 			_alphaBump = EditorGUILayout.Slider(new GUIContent("Tenth Line Alpha", "Every 10th line will have it's alpha value bumped by this amount."), _alphaBump, 0f, 1f);
 
 			// not used
-			// _BracketIncreaseValue = EditorGUILayout.FloatField(new GUIContent("NSWorld.Grid Increment Value", "Affects the amount by which the bracket keys will increment or decrement that snap value."), _BracketIncreaseValue);
+			// _BracketIncreaseValue = EditorGUILayout.FloatField(new GUIContent("NSLevel.Grid Increment Value", "Affects the amount by which the bracket keys will increment or decrement that snap value."), _BracketIncreaseValue);
 
-			_GridUnits = (SnapUnit)EditorGUILayout.EnumPopup("NSWorld.Grid Units", _GridUnits);
+			_GridUnits = (SnapUnit)EditorGUILayout.EnumPopup("NSLevel.Grid Units", _GridUnits);
 
 			_scaleSnapEnabled = EditorGUILayout.Toggle("Snap On Scale", _scaleSnapEnabled);
 
@@ -73,8 +73,8 @@ namespace ProGrids
 			// GUILayout.EndHorizontal();
 
 			GUILayout.Label("Shortcuts", EditorStyles.boldLabel);
-			_IncreaseGridSize = (KeyCode)EditorGUILayout.EnumPopup("Increase NSWorld.Grid Size", _IncreaseGridSize);
-			_DecreaseGridSize = (KeyCode)EditorGUILayout.EnumPopup("Decrease NSWorld.Grid Size", _DecreaseGridSize);
+			_IncreaseGridSize = (KeyCode)EditorGUILayout.EnumPopup("Increase NSLevel.Grid Size", _IncreaseGridSize);
+			_DecreaseGridSize = (KeyCode)EditorGUILayout.EnumPopup("Decrease NSLevel.Grid Size", _DecreaseGridSize);
 			_NudgePerspectiveBackward = (KeyCode)EditorGUILayout.EnumPopup("Nudge Perspective Backward", _NudgePerspectiveBackward);
 			_NudgePerspectiveForward = (KeyCode)EditorGUILayout.EnumPopup("Nudge Perspective Forward", _NudgePerspectiveForward);
 			_NudgePerspectiveReset = (KeyCode)EditorGUILayout.EnumPopup("Nudge Perspective Reset", _NudgePerspectiveReset);
