@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NSTacticsMovement;
 
-public class Player : MonoBehaviour, NSFSM.IContext {
+public class Player : ATacticsUnit, NSFSM.IContext {
 
     public InputControllerDefault inputs;
     public NSFSM.FSM fsm;
@@ -17,11 +18,15 @@ public class Player : MonoBehaviour, NSFSM.IContext {
     // Use this for initialization
     void Start () {
         //movement = new Vector3();
-        //fsm.Launch(this);
+        fsm.Launch(this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //fsm.Tick();
+        fsm.Tick();
 	}
+
+
+
+
 }
