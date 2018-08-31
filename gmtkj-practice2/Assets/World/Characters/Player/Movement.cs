@@ -8,7 +8,7 @@ namespace NSPlayer
     public class Movement : NSTacticsMovement.TacticsMovement
     {
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             Init();
         }

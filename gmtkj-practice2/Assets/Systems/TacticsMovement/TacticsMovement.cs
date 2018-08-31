@@ -132,9 +132,6 @@ namespace NSTacticsMovement
                 Block t = path.Peek();
                 Vector3 target = t.transform.position;
 
-                //Calculate the unit's position on top of the target block
-                //target.y += halfHeight + t.colliderData.collider.bounds.extents.y;
-
                 if (Vector3.Distance(transform.position, target) >= 0.05f)
                 {
                     bool jump = transform.position.y != target.y;
